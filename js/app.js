@@ -19,7 +19,7 @@ var seleccionCelda = e => {
             window.alert("No es tu turno");
         }
 
-    } else if (e.target.classList.contains('ficha-roja')){     //----->>>>> seleccion de ficha negra
+    } else if (e.target.classList.contains('ficha-roja')){  
         if (turnoJugador == 2) {
             if(e.target.classList.contains('select-box') !== true){
                 e.target.classList.add("select-box");
