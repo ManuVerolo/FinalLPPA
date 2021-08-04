@@ -1,0 +1,428 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body{
+    background-color: #634444;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #000;
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: 100;
+    margin: 0;
+  }
+  
+  .container{
+    width: 85%;
+    margin: auto;
+  }
+  
+  /* START HEADER */
+  header {
+    width: 100%;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 55%, rgba(0,212,255,1) 100%);
+  }
+  
+  .menu ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .menu li:hover {
+    background: rgba(247, 245, 245, 0.795);
+  }
+
+  .menu li a:hover{
+    color: black;
+  }
+  
+  .menu li a {
+    display: block;
+    padding: 20px 25px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+
+  /* END HEADER */
+  
+  /* START TABLERO */
+  .row {
+    width: 85%;
+    display: flex;
+    margin: auto;
+  }
+  
+  #juego-damas {
+    width: 70%;
+    padding: 20px;
+  }
+  
+  #border-tablero{
+      background-color: rgb(0, 0, 0);
+      margin: auto;
+  }
+  
+  #tablero-damas{
+    border-collapse: collapse;
+    border: 0;
+  }
+  
+  .casilla-blanca{
+    width: 60px;
+    height: 60px;
+    background-color: rgb(250, 250, 250);
+  }
+  
+  .casilla-negra{
+    width: 60px;
+    height: 60px;
+    background-color: rgb(0, 0, 0);
+  }
+  
+  .ficha-blanca{
+    background-image: url(../img/FichaGris.png);
+  }
+  
+  .ficha-roja{
+    background-image: url(../img/FichaRojo.png);
+  }
+  
+  .select-box{
+    border: 3px solid rgb(0, 4, 255);
+  }
+  
+  /* END TABLERO */
+  
+  /*area juego - menu lateral puntajes y boton*/
+  aside#menu-tablero {
+    width: 50%;
+    background-color: #fc6d6d;
+    padding: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 10px 10px 5px grey;
+  
+  }
+  
+  #menu-tablero h2 {
+      font-size: 30px;
+      color: white;
+      text-align: center;
+  }
+  
+  .puntajes {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    align: center;
+  }
+  
+  .puntajes h3 {
+    color: rgb(5, 5, 5);
+    margin-right: 10px;
+    text-align: center;
+  }
+  
+  .puntaje-jugador {
+    font-size: 23px;
+    color: rgb(0, 0, 0);
+    
+    margin-right: 10px;
+    text-align: center;
+    width: 53px;
+    background-color: rgb(230, 230, 230);
+    height: 30px;
+  }
+
+  .jugador-nombre{
+    height: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: white;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: fantasy;
+  }
+
+  .player{
+    height: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: white;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: fantasy;
+    text-decoration: underline;
+  }
+
+  .btn-modal{
+    padding: 0 16px;
+    border-radius: 2px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 73%, rgba(255,0,0,1) 100%);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+    transition: background-color 15ms linear,
+    box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    height: 36px;
+    line-height: 2.25rem;
+    font-family: Roboto, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: monospace;
+  }
+
+  .btn-modal:hover, .btn-modal:focus {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0 4px 5px 0 rgba(0, 0, 0, 0.14),
+      0 1px 10px 0 rgba(0, 0, 0, 0.12);
+    background-color: #159090;
+    cursor: pointer;
+  }
+
+  
+  #turno-jugador{
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-top: 20px;
+  }
+  
+  #btn-nuevo-juego {
+    height: 35px;
+    width: 90%;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color:#b60101;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 25px;
+    
+  }
+  
+  #btn-nuevo-juego:hover{
+    background-color:#ffffff;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .partidasGuardadas {
+    height: 35px;
+    width: 90%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background-color: #aaaaaa;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 15px;
+  }
+  
+  .partidasGuardadas:hover {
+    background-color:#ffffff;
+    color: black;
+    cursor: pointer;
+  }
+  
+  
+  /* SECTION FOOTER */
+  #main-footer{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  #main-footer a {
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  #main-footer p:hover {
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  /* END SECTION FOOTER */
+
+  /* MODAL */
+body {font-family: Arial, Helvetica, sans-serif;}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* CONTENIDO MODAL */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* CLOSE BUTTON */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+  /*Formulario de contacto*/
+  #form-contacto {
+  
+  }
+  
+  .form-row {
+    background: lightgray;
+    padding: 15px;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+  }
+  
+  .form-titulo{
+    text-align: center;
+  }
+  
+  .form-titulo h2 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    color: darkslategrey;
+  }
+  
+  .form-fila {
+    width: 75%;
+    margin-top: 15px;
+  }
+  
+  .form-fila input {
+    font-size: 16px;
+    height: 30px;
+    width: 100%;
+  }
+  
+  #consulta {
+    font-size: 16px;
+    height: 100px;
+    width: 100%;
+    resize:none;
+    background-color:#F7F2E0;
+  }
+  
+  #boton-consulta {
+    font-size: 16px;
+    height: 55px;
+    width: 220px;
+    font-weight: lighter;
+    color: #ffffff;
+    background: linear-gradient(0deg, #1b165a, #3c26b9 );
+    border: 0;
+    border-radius: 8px;
+    margin: auto;
+  }
+  
+  
+  /*media queries - comportamiento responsivo*/
+  @media (max-width: 1024px) {
+  
+    .row {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 880px) {
+  
+    .row {
+      width: 100%;
+      display: block;
+      margin: auto;
+    }
+  
+    #juego-damas {
+      width: 100%;
+      padding: 0px;
+    }
+  
+    aside#menu-tablero {
+      width: 500px;
+      margin: auto;
+    }
+  }
+  
+  
+  @media (max-width: 768px) {
+    header label {
+      display: block;
+    }
+    .menu {
+      position: absolute;
+      background: #4e94ab;
+      width: 70%;
+      margin-left: -70%;
+      transition: all 0.5s;
+    }
+    .menu ul {
+      flex-direction: column;
+    }
+    .menu li {
+      border-top: 1px solid #fff;
+    }
+  
+    #btn-menu:checked ~ .menu {
+      margin: 0;
+    }
+  
+    .form-fila {
+      width: 100%;
+    }
+  
+    .form-row {
+      width: 100%;
+    }
+  
+    #boton-consulta {
+      width: 100%;
+    }
+  }
+
