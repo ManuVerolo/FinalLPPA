@@ -21,10 +21,16 @@ function nuevoTablero() {
     puntosJugador1 = 12;
     puntosJugador2 = 12;
 
+    jugador1 = "";
+    jugador2 = "";
+
+    document.getElementById('jugador-nombre1').textContent = "";
+    document.getElementById('jugador-nombre2').textContent = "";
+
     //Turno iniciar
     turnoJugador = 1;
 
-    insert_fichas(ArrayInicial, puntosJugador1, puntosJugador2, turnoJugador);
+    insert_fichas(ArrayInicial, puntosJugador1, puntosJugador2, turnoJugador, jugador1, jugador2);
 }
 //FIN CARGA INCIAL PARA PARTIDA NUEVA
 
@@ -57,10 +63,12 @@ function tablero() {
 }
 
 //Inserto fichas en el tablero
-function insert_fichas(ArrayTablero, puntosJugador1, puntosJugador2, turnoJugador) {
+function insert_fichas(ArrayTablero, puntosJugador1, puntosJugador2, turnoJugador, jugador1, jugador2) {
 
     document.getElementById('puntos1').value = puntosJugador1;
     document.getElementById('puntos2').value = puntosJugador2;
+    document.getElementById('jugador-nombre1').textContent = jugador1;
+    document.getElementById('jugador-nombre2').textContent = jugador2;
     //Muestra jugador incial --
     document.getElementById('turno-jugador').textContent = 'Es el turno del jugador: ' + turnoJugador;
 
@@ -86,14 +94,24 @@ function insert_fichas(ArrayTablero, puntosJugador1, puntosJugador2, turnoJugado
 function casillaValida(colorFichas, posicionAnterior, posicionNueva){
     
     //Varibales de comparacion 
+    //Con substrig (0,1) veo cual es la fila anterior - la traigo como ej. 2-5
     var filaAnterior = parseInt(posicionAnterior.substring(0,1));
+    //console.log(filaAnterior);
     var columnaAnterior = parseInt(posicionAnterior.substring(2));
     var filaNueva = parseInt(posicionNueva.substring(0,1));
+    //Veo el ultimo numero que traigo, en la posicion 2.
     var columnaNueva = parseInt(posicionNueva.substring(2));
+    //console.log(columnaNueva);
+
+    
 
     //verifico segun el color de ficha que toca mover
+    //Abs veo el valor de la resta sea el absoluto porque me puede dar negativo
+    //Comparacion filanueva == filaanterio+1 corroboro de mover para adelante a la siguiente fila
     if (colorFichas == 'blancas'){       
         if(filaAnterior < 8  && filaNueva == (filaAnterior+1)  && Math.abs(columnaAnterior-columnaNueva) == 1){
+            console.log(filaNueva);
+            console.log(filaAnterior+1);
             return true;
         }
         else if(filaAnterior < 7  && filaNueva == (filaAnterior+2) && Math.abs(columnaAnterior-columnaNueva) == 2){
@@ -111,23 +129,12 @@ function casillaValida(colorFichas, posicionAnterior, posicionNueva){
         }
     }   
     else if (colorFichas == 'negras') {
-        console.log('mueven las negras');
-        if(filaAnterior > 1 
-            && filaNueva == (filaAnterior-1) 
-            && Math.abs(columnaAnterior-columnaNueva) == 1){
-            if (columnaAnterior > 1){
-                console.log('se mueve desde la columna mayor a 1, hay celda libre avance columna anterior')
-            }
-            else if (columnaAnterior < 8){
-                console.log('se mueve desde la columna menor a 8, hay celda libre avance columna siguiente')
-            }
+        if(filaAnterior > 1  && filaNueva == (filaAnterior-1)  && Math.abs(columnaAnterior-columnaNueva) == 1){
             return true;
         }
         else if(filaAnterior > 2 
-            && filaNueva == (filaAnterior-2) 
-            && Math.abs(columnaAnterior-columnaNueva) == 2){
+            && filaNueva == (filaAnterior-2)  && Math.abs(columnaAnterior-columnaNueva) == 2){
             var posicionPosibleFicha = (filaAnterior-1) + "-" + (columnaAnterior + ((columnaNueva-columnaAnterior)/2));
-            console.log(posicionPosibleFicha);
             var casillaVerificar = document.getElementById(posicionPosibleFicha);
             if (casillaVerificar.classList.contains('ficha-blanca')){ 
                 casillaVerificar.classList.remove("ficha-blanca");
@@ -161,11 +168,11 @@ function guardar_partida() {
         }   
     }  
     var ArrayInicialString = JSON.stringify(ArrayInicial);
-    //GUARDO LOS DATOS AL LOCAL STORAGE
+    //Guardo en local storage
     localStorage.setItem("Partida1.Puntos1", document.getElementById('puntos1').value);
     localStorage.setItem("Partida1.Puntos2", document.getElementById('puntos2').value);
-    localStorage.setItem("Partida1.Jugador1",document.getElementById('name-1').value);
-    localStorage.setItem("Partida1.Jugador2",document.getElementById('name-2').value);
+    localStorage.setItem("Partida1.Jugador1",document.getElementById('jugador-nombre1').textContent);
+    localStorage.setItem("Partida1.Jugador2",document.getElementById('jugador-nombre2').textContent);
     localStorage.setItem("Partida1.Juego", ArrayInicialString);
     localStorage.setItem("Partida1.TurnoJugador", turnoJugador);
     window.alert("Partida guardada");
@@ -178,7 +185,9 @@ function recuperar_partida_guardada() {
         var puntosJugador2 = localStorage.getItem("Partida1.Puntos2");
         var ArrayInicial =  JSON.parse(localStorage.getItem("Partida1.Juego"));
         var turnoJugador = localStorage.getItem("Partida1.TurnoJugador");
-        insert_fichas(ArrayInicial, puntosJugador1, puntosJugador2, turnoJugador);
+        var jugador1 = localStorage.getItem("Partida1.Jugador1")
+        var jugador2 = localStorage.getItem("Partida1.Jugador2")
+        insert_fichas(ArrayInicial, puntosJugador1, puntosJugador2, turnoJugador, jugador1, jugador2);
     }
 }
 

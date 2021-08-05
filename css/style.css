@@ -353,6 +353,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
     margin-bottom: 20px;
     padding: 15px;
     border-radius: 10px;
+    background-color: rgb(124, 124, 255);
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
   }
   .dv-btn{
     text-align: center;
@@ -407,16 +416,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
       margin: 0;
     }
   
-    .form-fila {
+    .title-contact {
       width: 100%;
     }
   
-    .form-row {
-      width: 100%;
-    }
-  
-    #boton-consulta {
-      width: 100%;
-    }
   }
 

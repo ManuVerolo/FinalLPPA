@@ -44,7 +44,6 @@ var seleccionCelda = e => {
                 
                 turnoJugador = 2;        
                 document.getElementById('turno-jugador').textContent = 'Es el turno del jugador: ' + turnoJugador;
-                console.log('')
                 posicionMarcada = e.target.id;                       
             }
             else if(casillaDesmarca.classList.contains('ficha-roja') 
